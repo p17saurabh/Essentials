@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar color = 'warning'>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <amplify-authenticator framework="ionic"></amplify-authenticator>
+</ion-content>
+<ion-footer no-border *ngIf="this.authState.signedIn">  
+    <ion-toolbar color="warning" text-center>
+      <ion-button fill="outline" color="warning" (click)="login()">
+          Login
+        <ion-icon slot="end" name="albums"></ion-icon>
+      </ion-button>
+    </ion-toolbar>
+  </ion-footer> 

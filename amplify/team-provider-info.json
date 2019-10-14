@@ -1,0 +1,21 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "essentialslogin-dev-20191008193125-authRole",
+            "UnauthRoleArn": "arn:aws:iam::412891160390:role/essentialslogin-dev-20191008193125-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::412891160390:role/essentialslogin-dev-20191008193125-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "essentialslogin-dev-20191008193125-deployment",
+            "UnauthRoleName": "essentialslogin-dev-20191008193125-unauthRole",
+            "StackName": "essentialslogin-dev-20191008193125",
+            "StackId": "arn:aws:cloudformation:us-east-2:412891160390:stack/essentialslogin-dev-20191008193125/bea155b0-ea23-11e9-a8b2-0a768148c3d2"
+        },
+        "categories": {
+            "auth": {
+                "essentialslogin2f81cd92": {
+                    "hostedUIProviderCreds": "[]"
+                }
+            }
+        }
+    }
+}

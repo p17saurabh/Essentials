@@ -1,0 +1,11 @@
+{
+    "AppSyncApiName": "essentialslogin",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": "false",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authessentialslogin2f81cd92",
+            "Outputs.UserPoolId"
+        ]
+    }
+}
