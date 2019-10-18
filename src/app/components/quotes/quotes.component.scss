@@ -1,4 +1,34 @@
 ion-slide {
-  padding: 100px 12px;
+  padding: 15px 2px;
   display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  position: relative;
+  padding-bottom: 100%;
+  /*padding-top: 50px;*/
+  height: 0;
+  overflow: hidden;
+}
+.fixed[scrollx="true"],
+div[scrolly="true"] {
+  position: relative;
+  overflow: hidden;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.fixed[scrollx="true"] {
+  overflow-x: auto;
+}
+
+.fixed[scrolly="true"] {
+  overflow-y: auto;
+}
+.active-item {
+  border-left: 8px solid var(--ion-color-warning);
 }

@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "ionic-9bb53"
+    "default": "ionic-9bb53",
+    "staging": "essentials-125e9"
   }
 }
