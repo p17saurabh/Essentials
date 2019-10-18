@@ -1,10 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title color='warning'>Feed
-      <ion-button class="ion-float-right round" color ="warning" (click)="navigateToUserPage()" >
-        <ion-icon name ='contact'>
-
-        </ion-icon>
+    <ion-menu-button slot="start"> </ion-menu-button>
+    <ion-title color="warning" class="ion-text-center">
+      Feed
+      <ion-button
+        class="ion-float-right round"
+        color="warning"
+        (click)="navigateToUserPage()"
+      >
+        <ion-icon name="contact"> </ion-icon>
       </ion-button>
     </ion-title>
   </ion-toolbar>
@@ -12,4 +16,6 @@
 
 <ion-content>
   <app-logo></app-logo>
+  <app-quotes></app-quotes>
+  <app-yoututbe-slides></app-yoututbe-slides>
 </ion-content>

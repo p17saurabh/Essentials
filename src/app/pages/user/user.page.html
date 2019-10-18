@@ -1,10 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title color='warning'>User
-      <ion-button class="ion-float-right round" color ="warning" (click)="navigateToFeedPage()" >
-        <ion-icon name ='arrow-back'>
-
-        </ion-icon>
+    <ion-title color="warning" class="ion-text-center"
+      >User
+      <ion-button
+        class="ion-float-right round"
+        color="warning"
+        (click)="navigateToFeedPage()"
+      >
+        <ion-icon name="arrow-back"> </ion-icon>
       </ion-button>
     </ion-title>
   </ion-toolbar>
@@ -13,7 +16,6 @@
 <ion-content>
   <app-logo></app-logo>
   <ion-footer>
-      <app-signout></app-signout>
+    <app-signout></app-signout>
   </ion-footer>
-  
 </ion-content>
