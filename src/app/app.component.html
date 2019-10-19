@@ -1,4 +1,37 @@
 <ion-app>
-  <ion-menu contentId="menu" type="push">from menu</ion-menu>
+  <div>
+    <ion-menu id="myMenu" type="push" contentId="menu">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title color="warning" class="ion-text-center">Explore</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content>
+        <ion-menu-toggle>
+          <ion-item (click)="navigateToQuotePage()">
+            <ion-icon color="secondary" slot="start" name="cash"></ion-icon>
+            <ion-label color="dark">Inspire</ion-label>
+          </ion-item>
+          <ion-item (click)="navigateToLinkPage()">
+            <ion-icon color="dark" slot="start" name="link"></ion-icon>
+            <ion-label color="dark">URL libraby</ion-label>
+          </ion-item>
+          <ion-item (click)="navigateToVideoPage()">
+            <ion-icon
+              color="danger"
+              slot="start"
+              name="logo-youtube"
+            ></ion-icon>
+            <ion-label color="dark">Videos</ion-label>
+          </ion-item>
+          <ion-item (click)="navigateToCreditPage()">
+            <ion-icon color="dark" slot="start" name="calculator"></ion-icon>
+            <ion-label color="dark">Credit score calculator</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-content>
+    </ion-menu>
+  </div>
   <ion-router-outlet id="menu"></ion-router-outlet>
 </ion-app>

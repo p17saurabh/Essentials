@@ -1,3 +1,5 @@
+import { CreditComponent } from "./credit/credit.component";
+import { LinksComponent } from "./links/links.component";
 import { QuotesComponent } from "./quotes/quotes.component";
 import { YoututbeSlidesComponent } from "./yoututbe-slides/yoututbe-slides.component";
 import { IonicModule } from "@ionic/angular";
@@ -16,7 +18,9 @@ import { SignoutComponent } from "./signout/signout.component";
     StartComponent,
     SignoutComponent,
     YoututbeSlidesComponent,
-    QuotesComponent
+    QuotesComponent,
+    LinksComponent,
+    CreditComponent
   ],
   exports: [
     SlidesComponent,
@@ -24,7 +28,9 @@ import { SignoutComponent } from "./signout/signout.component";
     StartComponent,
     SignoutComponent,
     YoututbeSlidesComponent,
-    QuotesComponent
+    QuotesComponent,
+    LinksComponent,
+    CreditComponent
   ],
   imports: [CommonModule, FormsModule, IonicModule]
 })

@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color="warning" class="ion-text-center">
+    <ion-title>Credit Score Calculator</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="fixed">
+  <ion-item>
+    <ion-input
+      type="number"
+      placeholder="Payment History"
+      [(ngModel)]="paymentHistory"
+    ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input
+      type="number"
+      placeholder="Utilization Rate"
+      [(ngModel)]="utilizationRate"
+    ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input
+      type="number"
+      placeholder="Age of Credit"
+      [(ngModel)]="ageOfCredit"
+    ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input
+      type="number"
+      placeholder="Type of credit"
+      [(ngModel)]="typeOfCredit"
+    ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input
+      type="number"
+      placeholder="No of hard inquires"
+      [(ngModel)]="hardInquires"
+    ></ion-input>
+  </ion-item>
+  <ion-button (click)="calculateCredit()">Calculate Credit</ion-button>
+</ion-content>
+<ion-content>
+  <div>
+    <ion-card>
+      <ion-card-header>
+        Credit Score Chart
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #doughnutCanvas width="100" height="100"></canvas>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
