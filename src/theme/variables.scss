@@ -2,6 +2,7 @@
 // http://ionicframework.com/docs/theming/
 
 /** Ionic CSS Variables **/
+
 :root {
   /** primary **/
   --ion-color-primary: #3880ff;
@@ -76,13 +77,14 @@
   --ion-color-light-tint: #f5f6f9;
 
   ion-tab-button.tab-selected {
-    ion-icon, ion-label {
-      color : var(--ion-color-warning) !important;
+    ion-icon,
+    ion-label {
+      color: var(--ion-color-warning) !important;
       --ion-color-base: var(--ion-color-warning) !important;
     }
   }
 
-  .center{
+  .center {
     text-align: center;
   }
   .round {
@@ -92,7 +94,7 @@
     --vertical-align: middle;
     --padding-start: 10px;
     --padding-end: 10px;
-   text-align: end;
+    text-align: end;
   }
 
   .bottom {
@@ -100,5 +102,5 @@
     left: 0;
     bottom: 10px;
     right: 0;
-}
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import { FormsModule, Validators } from "@angular/forms";
 import { Chart } from "chart.js";
 
 @Component({
@@ -14,7 +15,7 @@ export class CreditComponent implements OnInit {
   ageOfCredit: any;
   typeOfCredit: any;
   hardInquires: any;
-  visible = false;
+  visible = true;
   constructor() {}
   ngOnInit() {}
   ngAfterViewInit() {
@@ -58,5 +59,15 @@ export class CreditComponent implements OnInit {
         ]
       }
     });
+  }
+
+  updateChart() {
+    this.visible = false;
+    this.doughnutChart.data.datasets[0].data[0] = this.paymentHistory;
+    this.doughnutChart.data.datasets[0].data[1] = this.utilizationRate;
+    this.doughnutChart.data.datasets[0].data[2] = this.ageOfCredit;
+    this.doughnutChart.data.datasets[0].data[3] = this.typeOfCredit;
+    this.doughnutChart.data.datasets[0].data[4] = this.hardInquires;
+    this.doughnutChart.update();
   }
 }

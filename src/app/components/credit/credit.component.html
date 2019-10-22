@@ -39,10 +39,10 @@
       [(ngModel)]="hardInquires"
     ></ion-input>
   </ion-item>
-  <ion-button (click)="calculateCredit()">Calculate Credit</ion-button>
+  <ion-button (click)="updateChart()">Calculate Credit</ion-button>
 </ion-content>
 <ion-content>
-  <div>
+  <div [hidden]="visible">
     <ion-card>
       <ion-card-header>
         Credit Score Chart
