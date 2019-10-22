@@ -1,10 +1,18 @@
-ion-slide{
-    padding: 140px 12px;
-    display: block;
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+}
 
-    h2{
-        font-size: 24px;
-        font-weight: bold;
-    }
+.fixed {
+  width: 100%;
+  height: 70%;
+}
 
+ion-slide {
+  padding: 50px 2px;
+  display: block;
+}
+img {
+  width: 100%;
+  height: 170%;
 }
