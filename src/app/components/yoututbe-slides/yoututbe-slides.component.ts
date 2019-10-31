@@ -1,5 +1,6 @@
+import { GetVideosService } from "./../../services/get-videos.service";
 import { Component, OnInit } from "@angular/core";
-import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
+import { DomSanitizer } from "@angular/platform-browser";
 
 @Component({
   selector: "app-yoututbe-slides",
@@ -7,13 +8,20 @@ import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
   styleUrls: ["./yoututbe-slides.component.scss"]
 })
 export class YoututbeSlidesComponent implements OnInit {
-  safeSrc: SafeResourceUrl;
-  url = "https://www.youtube.com/embed/=QNlHeinW1TQ";
+  url: any;
+  constructor(
+    private myService: GetVideosService,
+    public sanitizer: DomSanitizer
+  ) {
+    this.getVideos();
+  }
 
-  constructor(private domSanitizer: DomSanitizer) {
-    this.safeSrc = this.domSanitizer.bypassSecurityTrustResourceUrl(
-      "https://www.youtube.com/embed/c9F5kMUfFKk"
-    );
+  getVideos() {
+    this.myService.getVideos().subscribe(data => {
+      console.log(data);
+      this.url = data;
+      console.log(this.url);
+    });
   }
 
   ngOnInit() {}

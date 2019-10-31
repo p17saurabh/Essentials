@@ -103,4 +103,9 @@
     bottom: 10px;
     right: 0;
   }
+
+  .ion-color-special {
+    background: var(--ion-color-dark);
+    color: var(--ion-color-dark-contrast);
+  }
 }

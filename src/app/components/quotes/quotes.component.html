@@ -6,27 +6,12 @@
 
 <ion-content class="fixed">
   <ion-slides pager="true" [options]="slideOpts">
-    <ion-slide class="card ">
+    <ion-slide class="card " *ngFor="let u of url">
       <div>
-        <img src="assets/images/quote1.png" alt="Essentials logo" />
-      </div>
-    </ion-slide>
-
-    <ion-slide>
-      <div>
-        <img src="assets/images/quote2.png" alt="Essentials logo" />
-      </div>
-    </ion-slide>
-
-    <ion-slide>
-      <div>
-        <img src="assets/images/quote3.png" alt="Essentials logo" />
-      </div>
-    </ion-slide>
-
-    <ion-slide>
-      <div>
-        <img src="assets/images/quote4.png" alt="Essentials logo" />
+        <img
+          src="https://famousquotesessential.s3.amazonaws.com/{{ u }}"
+          alt="Essentials logo"
+        />
       </div>
     </ion-slide>
   </ion-slides>
