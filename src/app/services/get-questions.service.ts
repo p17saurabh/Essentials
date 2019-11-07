@@ -1,18 +1,17 @@
-import { HttpClient } from "@angular/common/http";
-
 import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/do";
 
 @Injectable({
   providedIn: "root"
 })
-export class GetQuotesService {
+export class GetQuestionsService {
   url =
-    "https://cors-anywhere.herokuapp.com/http://35.170.203.135:8080/api/files/all";
+    "https://cors-anywhere.herokuapp.com/https://jogrtcz86g.execute-api.us-east-2.amazonaws.com/dev/getQuestions";
   constructor(private http: HttpClient) {}
 
-  getImages() {
+  getQuestions() {
     return this.http.get(this.url)._do(res => console.log(res));
   }
 }

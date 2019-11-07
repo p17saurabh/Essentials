@@ -57,6 +57,13 @@ const routes: Routes = [
         path: "credit",
         loadChildren: () =>
           import("../pages/credit/credit.module").then(m => m.CreditPageModule)
+      },
+      {
+        path: "comments",
+        loadChildren: () =>
+          import("../pages/comments/comments.module").then(
+            m => m.CommentsPageModule
+          )
       }
     ]
   }
