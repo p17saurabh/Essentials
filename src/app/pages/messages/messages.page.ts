@@ -1,3 +1,5 @@
+import { GetQuestionsTitleService } from "./../../services/get-questions-title.service";
+import { GetUserQuestionsService } from "./../../services/get-user-questions.service";
 import { GetQuestionsService } from "./../../services/get-questions.service";
 import { PostQuesrionService } from "./../../services/post-quesrion.service";
 import { Component, OnInit } from "@angular/core";
@@ -18,13 +20,25 @@ export class MessagesPage implements OnInit {
     private postQuesrionService: PostQuesrionService,
     private getQuestionsService: GetQuestionsService,
     private router: Router,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    private getUserQuestionsService: GetUserQuestionsService,
+    private getQuestionsTitleService: GetQuestionsTitleService
   ) {
     this.getQuestions();
   }
 
   getQuestions() {
     this.getQuestionsService.getQuestions().subscribe(data => {
+      console.log(data);
+      this.questions = data;
+      var keys = Object.keys(this.questions);
+      this.size = keys.length;
+      console.log(this.questions);
+    });
+  }
+
+  getUserQuestions() {
+    this.getUserQuestionsService.getUserQuestions().subscribe(data => {
       console.log(data);
       this.questions = data;
       var keys = Object.keys(this.questions);
@@ -43,6 +57,20 @@ export class MessagesPage implements OnInit {
     this.postQuesrionService.postQuestion(title, body);
     console.log(title);
     console.log(body);
+  }
+
+  searchQuestion(title: any) {
+    this.getQuestionsTitleService.getUserQuestions(title).subscribe(data => {
+      console.log(data);
+      this.questions = data;
+      var keys = Object.keys(this.questions);
+      this.size = keys.length;
+      console.log(this.questions);
+    });
+  }
+
+  search() {
+    this.presentSearchPrompt();
   }
 
   async presentAlertPrompt() {
@@ -76,6 +104,39 @@ export class MessagesPage implements OnInit {
           handler: data => {
             console.log(JSON.stringify(data));
             this.postQuestion(data.title, data.question);
+            console.log("Confirm Ok");
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  async presentSearchPrompt() {
+    const alert = await this.alertController.create({
+      header: "Search Question!",
+      inputs: [
+        {
+          name: "title",
+          type: "text",
+          placeholder: "Title"
+        }
+      ],
+      buttons: [
+        {
+          text: "Cancel",
+          role: "cancel",
+          cssClass: "secondary",
+          handler: () => {
+            console.log("Confirm Cancel");
+          }
+        },
+        {
+          text: "Ok",
+          handler: data => {
+            console.log(JSON.stringify(data));
+            this.searchQuestion(data.title);
             console.log("Confirm Ok");
           }
         }

@@ -21,8 +21,10 @@
       <img src="assets/images/typeofaccount.jpg" />
     </ion-slide>
     <ion-slide class="fixed ">
+      <br />
+      <br />
       <ion-label position="floating" class="ion-text-center">
-        Whats my score ?
+        <p><strong color="dark">Whats my score ?</strong></p>
       </ion-label>
       <br />
       <ion-button (click)="showCreditCal()" class="ion-text-center">
@@ -30,87 +32,86 @@
       </ion-button>
     </ion-slide>
   </ion-slides>
-</ion-content>
-<ion-content class="ion-text-center" [hidden]="hideCredit">
-  <ion-item>
-    <ion-label class="clickEnableCls" stacked (click)="labelClick()">
-      Payment history
-    </ion-label>
-    <div [hidden]="labelVisible">
-      <ion-item>
-        <ion-label position="floating">
-          # Total payments
-        </ion-label>
-        <ion-input [(ngModel)]="totalPayment" type="number"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">
-          # Late payments
-        </ion-label>
-        <ion-input [(ngModel)]="latePayments" type="number"></ion-input>
-      </ion-item>
-    </div>
-  </ion-item>
 
-  <ion-item>
-    <ion-label class="clickEnableCls" stacked (click)="labelClick1()">
-      Utilization Rate
-    </ion-label>
-    <div [hidden]="labelVisible1">
-      <ion-item>
-        <ion-label position="floating">
-          Credit Limit
-        </ion-label>
-        <ion-input [(ngModel)]="creditLimit" type="number"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">
-          Credit card balance
-        </ion-label>
-        <ion-input [(ngModel)]="creditCardBalance" type="number"></ion-input>
-      </ion-item>
+  <div class="ion-text-center" [hidden]="hideCredit">
+    <ion-item>
+      <ion-label class="clickEnableCls" stacked (click)="labelClick()">
+        Payment history
+      </ion-label>
+      <div [hidden]="labelVisible">
+        <ion-item>
+          <ion-label position="floating">
+            # Total payments
+          </ion-label>
+          <ion-input [(ngModel)]="totalPayment" type="number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">
+            # Late payments
+          </ion-label>
+          <ion-input [(ngModel)]="latePayments" type="number"></ion-input>
+        </ion-item>
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label class="clickEnableCls" stacked (click)="labelClick1()">
+        Utilization Rate
+      </ion-label>
+      <div [hidden]="labelVisible1">
+        <ion-item>
+          <ion-label position="floating">
+            Credit Limit
+          </ion-label>
+          <ion-input [(ngModel)]="creditLimit" type="number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">
+            Credit card balance
+          </ion-label>
+          <ion-input [(ngModel)]="creditCardBalance" type="number"></ion-input>
+        </ion-item>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Age of credit</ion-label>
+      <ion-select [(ngModel)]="ageOfCredit" (ionChange)="optionsFn()">
+        <ion-select-option value="25.5">Less than 2 years</ion-select-option>
+        <ion-select-option value="51">2 to 4 years</ion-select-option>
+        <ion-select-option value="76">5 to 6 years</ion-select-option>
+        <ion-select-option value="102">7 to 8 years</ion-select-option>
+        <ion-select-option value="127.5">9 plus years</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Type of credit</ion-label>
+      <ion-select [(ngModel)]="typeOfCredit">
+        <ion-select-option value="21.25">0 to 5</ion-select-option>
+        <ion-select-option value="42.5">6 to 10</ion-select-option>
+        <ion-select-option value="63.75">11 to 20</ion-select-option>
+        <ion-select-option value="85">21 and more</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>No of hard inquires</ion-label>
+      <ion-select [(ngModel)]="hardInquires">
+        <ion-select-option value="17">9 and more</ion-select-option>
+        <ion-select-option value="34">5 to 8</ion-select-option>
+        <ion-select-option value="51">3 to 4</ion-select-option>
+        <ion-select-option value="68">1 to 2</ion-select-option>
+        <ion-select-option value="85">zero</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-button (click)="updateChart()">Calculate Credit</ion-button>
+    <div [hidden]="visible">
+      <ion-card>
+        <ion-card-header>
+          Credit Score Chart
+        </ion-card-header>
+        <ion-card-content>
+          <canvas #doughnutCanvas width="100" height="100"></canvas>
+        </ion-card-content>
+      </ion-card>
     </div>
-  </ion-item>
-  <ion-item>
-    <ion-label>Age of credit</ion-label>
-    <ion-select [(ngModel)]="ageOfCredit" (ionChange)="optionsFn()">
-      <ion-select-option value="25.5">Less than 2 years</ion-select-option>
-      <ion-select-option value="51">2 to 4 years</ion-select-option>
-      <ion-select-option value="76">5 to 6 years</ion-select-option>
-      <ion-select-option value="102">7 to 8 years</ion-select-option>
-      <ion-select-option value="127.5">9 plus years</ion-select-option>
-    </ion-select>
-  </ion-item>
-  <ion-item>
-    <ion-label>Type of credit</ion-label>
-    <ion-select [(ngModel)]="typeOfCredit">
-      <ion-select-option value="21.25">0 to 5</ion-select-option>
-      <ion-select-option value="42.5">6 to 10</ion-select-option>
-      <ion-select-option value="63.75">11 to 20</ion-select-option>
-      <ion-select-option value="85">21 and more</ion-select-option>
-    </ion-select>
-  </ion-item>
-  <ion-item>
-    <ion-label>No of hard inquires</ion-label>
-    <ion-select [(ngModel)]="hardInquires">
-      <ion-select-option value="17">9 and more</ion-select-option>
-      <ion-select-option value="34">5 to 8</ion-select-option>
-      <ion-select-option value="51">3 to 4</ion-select-option>
-      <ion-select-option value="68">1 to 2</ion-select-option>
-      <ion-select-option value="85">zero</ion-select-option>
-    </ion-select>
-  </ion-item>
-  <ion-button (click)="updateChart()">Calculate Credit</ion-button>
-</ion-content>
-<ion-content class="fixed ion-text-center">
-  <div [hidden]="visible">
-    <ion-card>
-      <ion-card-header>
-        Credit Score Chart
-      </ion-card-header>
-      <ion-card-content>
-        <canvas #doughnutCanvas width="100" height="100"></canvas>
-      </ion-card-content>
-    </ion-card>
   </div>
 </ion-content>

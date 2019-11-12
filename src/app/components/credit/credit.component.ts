@@ -25,7 +25,21 @@ export class CreditComponent implements OnInit {
   hideCredit = true;
   labelVisible = true;
   labelVisible1 = true;
-  constructor(private alertController: AlertController) {}
+  options: any;
+  constructor(private alertController: AlertController) {
+    this.options = {
+      responsive: true,
+
+      legend: {
+        display: true,
+        position: "bottom",
+        labels: {
+          fontColor: "#333",
+          fontSize: 11
+        }
+      }
+    };
+  }
   ngOnInit() {}
   ngAfterViewInit() {
     this.doughnutChartMethod();
@@ -40,19 +54,19 @@ export class CreditComponent implements OnInit {
       data: {
         labels: [
           "Payment History",
-          "Unearned points PH",
+          "Points lost PH",
           "Utilization Rate",
-          "Unearned points UR",
+          "Points lost UR",
           "Age of Credit",
-          "Unearned points AoC",
+          "Points lost AoC",
           "Type of credit",
-          "Unearned points ToC",
-          "No of hard inquires",
-          "Unearned points HI"
+          "Points lost ToC",
+          "#of hard inquires",
+          "Points lost HI"
         ],
         datasets: [
           {
-            label: "# of Votes",
+            label: "# of Credit points",
             data: [50, 0, 7, 0, 20, 0, 10, 0, 5, 0],
             backgroundColor: [
               "rgba(255, 159, 64, 0.2)",
@@ -81,7 +95,8 @@ export class CreditComponent implements OnInit {
             borderWidth: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
           }
         ]
-      }
+      },
+      options: this.options
     });
   }
 
@@ -142,7 +157,9 @@ export class CreditComponent implements OnInit {
       header: "Your Credit score",
 
       message:
-        "Your credit score is " + Math.round(this.totalPoints) + " out of 850",
+        "Your credit score is " +
+        Math.round(this.totalPoints) +
+        " out of 850. \n Scoll down!!",
       buttons: ["OK"]
     });
 
