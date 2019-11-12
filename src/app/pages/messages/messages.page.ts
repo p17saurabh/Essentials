@@ -1,9 +1,9 @@
 import { GetQuestionsService } from "./../../services/get-questions.service";
 import { PostQuesrionService } from "./../../services/post-quesrion.service";
 import { Component, OnInit } from "@angular/core";
-import { AlertController } from "@ionic/angular";
+import { AlertController, NavController } from "@ionic/angular";
 import { Title } from "@angular/platform-browser";
-import { Router } from "@angular/router";
+import { Router, NavigationExtras } from "@angular/router";
 
 @Component({
   selector: "app-messages",
@@ -12,11 +12,13 @@ import { Router } from "@angular/router";
 })
 export class MessagesPage implements OnInit {
   questions: any;
+  size: any;
   constructor(
     private alertController: AlertController,
     private postQuesrionService: PostQuesrionService,
     private getQuestionsService: GetQuestionsService,
-    private router: Router
+    private router: Router,
+    public navCtrl: NavController
   ) {
     this.getQuestions();
   }
@@ -25,6 +27,8 @@ export class MessagesPage implements OnInit {
     this.getQuestionsService.getQuestions().subscribe(data => {
       console.log(data);
       this.questions = data;
+      var keys = Object.keys(this.questions);
+      this.size = keys.length;
       console.log(this.questions);
     });
   }
@@ -83,9 +87,24 @@ export class MessagesPage implements OnInit {
 
   getComments(item: any) {
     console.log(item);
-    this.router.navigate(["home/comments"], { state: item });
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        special: JSON.stringify(item)
+      }
+    };
+
+    this.router.navigate(["home/comments"], navigationExtras);
   }
   ionViewDidEnter() {
     console.log("ion view ");
+  }
+
+  doRefresh(event) {
+    console.log("Begin async operation");
+    this.getQuestions();
+    setTimeout(() => {
+      console.log("Async operation has ended");
+      event.target.complete();
+    }, 2000);
   }
 }

@@ -22,6 +22,7 @@ export class CreditComponent implements OnInit {
   creditCardBalance: any;
   totalPoints: any;
   visible = true;
+  hideCredit = true;
   labelVisible = true;
   labelVisible1 = true;
   constructor(private alertController: AlertController) {}
@@ -157,5 +158,9 @@ export class CreditComponent implements OnInit {
 
   optionsFn() {
     console.log(this.ageOfCredit);
+  }
+
+  showCreditCal() {
+    this.hideCredit = false;
   }
 }

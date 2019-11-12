@@ -1,12 +1,20 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import "rxjs/add/operator/map";
+import { Auth } from "aws-amplify";
 
 @Injectable({
   providedIn: "root"
 })
 export class PostQuesrionService {
-  constructor(public httpClient: HttpClient) {}
+  u: any;
+  constructor(public httpClient: HttpClient) {
+    Auth.currentAuthenticatedUser({
+      bypassCache: false // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
+    })
+      .then(user => (this.u = user.username))
+      .catch(err => console.log(err));
+  }
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -23,7 +31,8 @@ export class PostQuesrionService {
         "https://cors-anywhere.herokuapp.com/https://jogrtcz86g.execute-api.us-east-2.amazonaws.com/dev/postQuestion",
         {
           title: title,
-          body: question
+          body: question,
+          user: this.u
         }
       )
       .subscribe(response => {

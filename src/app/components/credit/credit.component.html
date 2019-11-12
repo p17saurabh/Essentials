@@ -3,7 +3,35 @@
     <ion-title>Credit Score Calculator</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content class="fixed ion-text-center">
+<ion-content class=" fixed ion-text-center">
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide class="fixed ">
+      <img src="assets/images/Paymenthistory.jpg" />
+    </ion-slide>
+    <ion-slide class="fixed ">
+      <img src="assets/images/UtilizationRate.jpg" />
+    </ion-slide>
+    <ion-slide class="fixed ">
+      <img src="assets/images/ageofcredit.jpg" />
+    </ion-slide>
+    <ion-slide class="fixed ">
+      <img src="assets/images/hardinquiry.jpg" />
+    </ion-slide>
+    <ion-slide class="fixed ">
+      <img src="assets/images/typeofaccount.jpg" />
+    </ion-slide>
+    <ion-slide class="fixed ">
+      <ion-label position="floating" class="ion-text-center">
+        Whats my score ?
+      </ion-label>
+      <br />
+      <ion-button (click)="showCreditCal()" class="ion-text-center">
+        <ion-icon name="calculator" color="warning"> </ion-icon>
+      </ion-button>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
+<ion-content class="ion-text-center" [hidden]="hideCredit">
   <ion-item>
     <ion-label class="clickEnableCls" stacked (click)="labelClick()">
       Payment history
@@ -74,7 +102,7 @@
   </ion-item>
   <ion-button (click)="updateChart()">Calculate Credit</ion-button>
 </ion-content>
-<ion-content>
+<ion-content class="fixed ion-text-center">
   <div [hidden]="visible">
     <ion-card>
       <ion-card-header>

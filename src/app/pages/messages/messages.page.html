@@ -6,18 +6,57 @@
 
 <ion-content class="ion-text-center">
   <app-logo></app-logo>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing..."
+    >
+    </ion-refresher-content>
+  </ion-refresher>
+
   <ion-button
     color="warning"
+    size="small"
+    shape="round "
     (click)="writeComment()"
-    (ionRefresh)="doRefresh($event)"
   >
+    <ion-icon name="chatboxes"></ion-icon>
     Add question
   </ion-button>
   <ion-list>
+    <ion-item>
+      <ion-label position="floating" class="ion-text-right" color="warning">
+        Total Questions: {{ size }}
+      </ion-label>
+    </ion-item>
     <ion-item *ngFor="let type of questions">
-      <button ion-button full color="light" (click)="getComments(type)">
-        {{ type.title }}
-      </button>
+      <div>
+        <p>
+          <strong
+            [ngStyle]="{ color: type.comments.length == 0 ? 'red' : 'dark' }"
+            (click)="getComments(type)"
+          >
+            {{ type.title }}
+          </strong>
+        </p>
+        <div *ngIf="type.comments">
+          <ion-label position="stacked" color="dark">
+            Comments : {{ type.comments.length }}
+          </ion-label>
+          <ion-label *ngIf="type.user" position="stacked" color="dark">
+            Question by : {{ type.user }}
+          </ion-label>
+        </div>
+      </div>
+      <ion-icon
+        name="undo"
+        position="fixed"
+        class="ion-text-right"
+        (click)="getComments(type)"
+      ></ion-icon>
     </ion-item>
   </ion-list>
 </ion-content>

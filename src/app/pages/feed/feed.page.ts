@@ -19,4 +19,7 @@ export class FeedPage implements OnInit {
   navigateToUserPage() {
     this.router.navigate(["home/user"]);
   }
+  ionViewDidEnter() {
+    this.menuCtrl.enable(true);
+  }
 }
