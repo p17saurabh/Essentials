@@ -14,12 +14,15 @@
     <ion-slide class="fixed ">
       <img src="assets/images/ageofcredit.jpg" />
     </ion-slide>
-    <ion-slide class="fixed ">
-      <img src="assets/images/hardinquiry.jpg" />
-    </ion-slide>
+
     <ion-slide class="fixed ">
       <img src="assets/images/typeofaccount.jpg" />
     </ion-slide>
+
+    <ion-slide class="fixed ">
+      <img src="assets/images/hardinquiry.jpg" />
+    </ion-slide>
+
     <ion-slide class="fixed ">
       <br />
       <br />
@@ -67,7 +70,7 @@
         </ion-item>
         <ion-item>
           <ion-label position="floating">
-            Credit card balance
+            Amount you owe
           </ion-label>
           <ion-input [(ngModel)]="creditCardBalance" type="number"></ion-input>
         </ion-item>
@@ -84,7 +87,7 @@
       </ion-select>
     </ion-item>
     <ion-item>
-      <ion-label>Type of credit</ion-label>
+      <ion-label>Type of credits</ion-label>
       <ion-select [(ngModel)]="typeOfCredit">
         <ion-select-option value="21.25">0 to 5</ion-select-option>
         <ion-select-option value="42.5">6 to 10</ion-select-option>

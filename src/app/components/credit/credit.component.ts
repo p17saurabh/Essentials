@@ -59,7 +59,7 @@ export class CreditComponent implements OnInit {
           "Points lost UR",
           "Age of Credit",
           "Points lost AoC",
-          "Type of credit",
+          "Type of credits",
           "Points lost ToC",
           "#of hard inquires",
           "Points lost HI"
@@ -69,16 +69,16 @@ export class CreditComponent implements OnInit {
             label: "# of Credit points",
             data: [50, 0, 7, 0, 20, 0, 10, 0, 5, 0],
             backgroundColor: [
-              "rgba(255, 159, 64, 0.2)",
-              "rgba(255, 0, 0, 1)",
-              "rgba(255, 99, 132, 0.2)",
-              "rgba(255, 0, 0, 1)",
-              "rgba(54, 162, 235, 0.2)",
-              "rgba(255, 0, 0, 1)",
-              "rgba(255, 206, 86, 0.2)",
-              "rgba(255, 0, 0, 1)",
-              "rgba(75, 192, 192, 0.2)",
-              "rgba(255, 0, 0, 1)"
+              "rgba(0,0,255,1)",
+              "rgba(0,0,255,0.5)",
+              "rgba(0,128,0,1)",
+              "rgba(0,128,0,0.5)",
+              "rgba(128,0,0,1)",
+              "rgba(128,0,0,0.5)",
+              "rgba(255,0,255,1)",
+              "rgba(255,0,255,0.5)",
+              "rgba(255,199,15,1)",
+              "rgba(253,225,123,1)"
             ],
             hoverBackgroundColor: [
               "#FFCE56",
@@ -159,7 +159,10 @@ export class CreditComponent implements OnInit {
       message:
         "Your credit score is " +
         Math.round(this.totalPoints) +
-        " out of 850. \n Scoll down!!",
+        " out of 850." +
+        "<br><br>" +
+        this.score(this.totalPoints) +
+        " <br><br> Scroll for detailed break down!!",
       buttons: ["OK"]
     });
 
@@ -171,6 +174,19 @@ export class CreditComponent implements OnInit {
   }
   labelClick1() {
     this.labelVisible1 = false;
+  }
+
+  score(totalPoints: any) {
+    const totalPoint = parseInt(totalPoints);
+    console.log(typeof totalPoint);
+    console.log(totalPoint);
+    if (totalPoint > 800) {
+      return "<h3> Your score is good </h3>";
+    }
+    if (totalPoint < 800 && totalPoint > 600) {
+      return "<h3> Your score is average </h3>";
+    }
+    return "<h3> Your score is bad </h3>";
   }
 
   optionsFn() {
