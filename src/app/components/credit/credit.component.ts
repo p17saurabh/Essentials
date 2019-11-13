@@ -81,15 +81,15 @@ export class CreditComponent implements OnInit {
               "rgba(253,225,123,1)"
             ],
             hoverBackgroundColor: [
-              "#FFCE56",
               "#D3D3D3",
-              "#FF6384",
               "#D3D3D3",
-              "#36A2EB",
               "#D3D3D3",
-              "#FFCE56",
               "#D3D3D3",
-              "#FF6384",
+              "#D3D3D3",
+              "#D3D3D3",
+              "#D3D3D3",
+              "#D3D3D3",
+              "#D3D3D3",
               "#D3D3D3"
             ],
             borderWidth: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
