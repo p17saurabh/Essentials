@@ -15,6 +15,64 @@
 
 <ion-content>
   <app-logo></app-logo>
+  <div class="ion-text-center">
+    <ion-label class="my-icon" color="dark">
+      <h3 class="my-label">Welcome {{user}}</h3>
+      <ion-icon name="person"></ion-icon>
+    </ion-label>
+  </div>
+
+  <br />
+  <br />
+
+  <div class="ion-text-center">
+    <ion-button
+      color="warning"
+      size="medium"
+      shape="round "
+      (click)="getUserQuestions()"
+    >
+      <ion-icon name="contact"></ion-icon>
+      Get my qyestions
+    </ion-button>
+  </div>
+  <br />
+  <ion-list>
+    <ion-item *ngIf="size">
+      <ion-label class="ion-text-right" color="warning">
+        Total Questions: {{ size }}
+      </ion-label>
+    </ion-item>
+    <ion-item *ngFor="let type of questions">
+      <div>
+        <p>
+          <strong
+            [ngStyle]="{ color: type.comments.length == 0 ? 'red' : 'dark' }"
+            (click)="getComments(type)"
+          >
+            {{ type.title }}
+          </strong>
+        </p>
+        <div *ngIf="type.comments">
+          <ion-label position="stacked" color="dark">
+            Comments : {{ type.comments.length }}
+          </ion-label>
+          <ion-label *ngIf="type.user" position="stacked" color="dark">
+            Question by : {{ type.user }}
+          </ion-label>
+        </div>
+      </div>
+      <ion-icon
+        name="undo"
+        position="fixed"
+        class="ion-text-right"
+        (click)="getComments(type)"
+      ></ion-icon>
+    </ion-item>
+  </ion-list>
+
+  <br />
+  <br />
   <ion-footer>
     <app-signout></app-signout>
   </ion-footer>

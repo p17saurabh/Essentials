@@ -64,6 +64,20 @@ const routes: Routes = [
           import("../pages/comments/comments.module").then(
             m => m.CommentsPageModule
           )
+      },
+      {
+        path: "payment",
+        loadChildren: () =>
+          import("../pages/payment/payment.module").then(
+            m => m.PaymentPageModule
+          )
+      },
+      {
+        path: "aboutus",
+        loadChildren: () =>
+          import("../pages/aboutus/aboutus.module").then(
+            m => m.AboutusPageModule
+          )
       }
     ]
   }

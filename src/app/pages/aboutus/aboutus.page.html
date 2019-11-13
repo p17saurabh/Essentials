@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title color="warning" class="ion-text-center"
+      >About Us
+      <ion-button
+        class="ion-float-right round"
+        color="warning"
+        (click)="navigateToSettingPage()"
+      >
+        <ion-icon name="arrow-back"> </ion-icon>
+      </ion-button>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-logo></app-logo>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Who am I</ion-card-subtitle>
+      <ion-card-title>Long Nguyen</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <img src="assets/images/long.JPG" />
+      <br />
+      <br />
+      Details about Long
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Mission Statement</ion-card-subtitle>
+      <ion-card-title>Our goal</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Essentials focuses on creating financial awareness by providing concise
+      financial information to users of the age group 15-24 as this age group
+      lack financial literacy and money-management skills. This application
+      serves as an Information portal for young adults to access all the
+      “Essential” information regarding financial awareness.
+    </ion-card-content>
+  </ion-card>
+</ion-content>
