@@ -10,7 +10,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
 import { HttpClientModule } from "@angular/common/http";
-
+import { PayPal } from "@ionic-native/paypal/ngx";
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -23,7 +23,7 @@ import { HttpClientModule } from "@angular/common/http";
   providers: [
     StatusBar,
     SplashScreen,
-
+    PayPal,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     InAppBrowser
   ],

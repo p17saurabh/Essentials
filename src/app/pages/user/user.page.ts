@@ -1,3 +1,4 @@
+import { GetUserService } from "./../../services/get-user.service";
 import { Component, OnInit } from "@angular/core";
 import { Router, NavigationExtras } from "@angular/router";
 import { Auth } from "aws-amplify";
@@ -12,25 +13,31 @@ export class UserPage implements OnInit {
   user: any;
   questions: any;
   size: any;
+  hidden = true;
+  trialDays: number;
   constructor(
     private router: Router,
-    private getUserQuestionsService: GetUserQuestionsService
+    private getUserQuestionsService: GetUserQuestionsService,
+    private getUserService: GetUserService
   ) {
     Auth.currentAuthenticatedUser({
       bypassCache: false // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
     })
       .then(user => (this.user = user.username))
+      .then(u => this.getDaysLeft())
       .catch(err => console.log(err));
   }
 
   ngOnInit() {}
 
   getUserQuestions() {
+    this.hidden = false;
     this.getUserQuestionsService.getUserQuestions().subscribe(data => {
       console.log(data);
       this.questions = data;
       var keys = Object.keys(this.questions);
       this.size = keys.length;
+      this.hidden = true;
       console.log(this.questions);
     });
   }
@@ -48,5 +55,17 @@ export class UserPage implements OnInit {
 
   navigateToFeedPage() {
     this.router.navigate(["home/feed"]);
+  }
+
+  getDaysLeft() {
+    this.getUserService.getUser(this.user).subscribe(data => {
+      var d = new Date();
+      var date = new Date(data[0].createdAt);
+      var diff = d.getTime() - date.getTime();
+      var Difference_In_Days = diff / (1000 * 3600 * 24);
+      var trial_days = 30 - Difference_In_Days;
+      this.trialDays = Math.floor(trial_days);
+      console.log("Trail days left " + trial_days);
+    });
   }
 }

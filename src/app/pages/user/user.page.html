@@ -21,7 +21,11 @@
       <ion-icon name="person"></ion-icon>
     </ion-label>
   </div>
+  <br />
 
+  <div class="ion-text-center" color="red" *ngIf="trialDays">
+    <h4>Trial days left : {{trialDays}}</h4>
+  </div>
   <br />
   <br />
 
@@ -43,6 +47,10 @@
         Total Questions: {{ size }}
       </ion-label>
     </ion-item>
+    <div [hidden]="hidden" class="ion-text-center">
+      <p>Loading data</p>
+      <ion-spinner name="dots"></ion-spinner>
+    </div>
     <ion-item *ngFor="let type of questions">
       <div>
         <p>

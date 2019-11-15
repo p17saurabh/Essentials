@@ -35,6 +35,7 @@
     <ion-icon name="chatboxes"></ion-icon>
     Add question
   </ion-button>
+
   <ion-list>
     <ion-item>
       <ion-label
@@ -51,6 +52,10 @@
         Total Questions: {{ size }}
       </ion-label>
     </ion-item>
+    <div [hidden]="hidden" class="ion-text-center">
+      <p>Loading data</p>
+      <ion-spinner name="dots"></ion-spinner>
+    </div>
     <ion-item *ngFor="let type of questions">
       <div>
         <p>

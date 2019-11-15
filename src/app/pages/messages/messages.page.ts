@@ -14,6 +14,7 @@ import { Router, NavigationExtras } from "@angular/router";
 })
 export class MessagesPage implements OnInit {
   questions: any;
+  hidden = false;
   size: any;
   constructor(
     private alertController: AlertController,
@@ -33,16 +34,19 @@ export class MessagesPage implements OnInit {
       this.questions = data;
       var keys = Object.keys(this.questions);
       this.size = keys.length;
+      this.hidden = true;
       console.log(this.questions);
     });
   }
 
   getUserQuestions() {
+    this.hidden = false;
     this.getUserQuestionsService.getUserQuestions().subscribe(data => {
       console.log(data);
       this.questions = data;
       var keys = Object.keys(this.questions);
       this.size = keys.length;
+      this.hidden = true;
       console.log(this.questions);
     });
   }
