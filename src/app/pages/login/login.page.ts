@@ -29,7 +29,6 @@ export class LoginPage implements OnInit {
       this.authState.signedIn = authState.state;
       if (this.authState.signedIn === "signedIn") {
         this.getUser();
-        this.router.navigate(["/home/feed"]);
       }
     });
   }
@@ -47,8 +46,20 @@ export class LoginPage implements OnInit {
       if (Object.keys(data).length === 0) {
         console.log("creating new user" + u);
         this.createUserService.postUser(u);
+        this.router.navigate(["/home/feed"]);
       } else {
         console.log("user data : " + data);
+        var d = new Date();
+        var date = new Date(data[0].createdAt);
+        var diff = d.getTime() - date.getTime();
+        var Difference_In_Days = diff / (1000 * 3600 * 24);
+        var trial_days = 30 - Difference_In_Days;
+        console.log("trial days: " + trial_days);
+        if (trial_days < 0) {
+          this.router.navigate(["/pay"]);
+        } else {
+          this.router.navigate(["/home/feed"]);
+        }
       }
     });
   }

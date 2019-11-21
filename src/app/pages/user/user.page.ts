@@ -65,7 +65,7 @@ export class UserPage implements OnInit {
       var Difference_In_Days = diff / (1000 * 3600 * 24);
       var trial_days = 30 - Difference_In_Days;
       this.trialDays = Math.floor(trial_days);
-      console.log("Trail days left " + trial_days);
+      console.log("Trail days left " + this.trialDays);
     });
   }
 }
