@@ -4,45 +4,21 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="fixed">
-  <ion-slides pager="true" [options]="slideOpts">
-    <ion-slide class="card ">
+<ion-content class="fixed ion-text-center">
+  <ion-slides class="fixed ion-text-center" pager="true" [options]="slideOpts">
+    <ion-slide class="card ion-text-center" *ngFor="let u of data">
       <div>
-        <ion-card (click)="navigateLinkOne()">
-          <img src="assets/images/link1.png" />
-          <ion-label>
-            7 Pieces of Financial Advice That Forever Changed My Life
-          </ion-label>
-        </ion-card>
-      </div>
-    </ion-slide>
-    <ion-slide class="card ">
-      <div>
-        <ion-card (click)="navigateLinkTwo()">
-          <img src="assets/images/link2.png" />
-          <ion-label>
-            50 Personal Finance Tips That Will Change the Way You Think About
-            Money
-          </ion-label>
-        </ion-card>
-      </div>
-    </ion-slide>
-    <ion-slide class="card ">
-      <div>
-        <ion-card (click)="navigateLinkThree()">
-          <img src="assets/images/link3.png" />
-          <ion-label>
-            How to Find a Financial Advisor if You’re Not Rich
-          </ion-label>
-        </ion-card>
-      </div>
-    </ion-slide>
+        <ion-card class="fixedSlide1" (click)="navigateLink(u.URLLink)">
+          <ion-item>
+            <ion-label>
+              <ion-icon color="danger" name="link" slot="start"></ion-icon>
+              Link {{ u.id }}
+            </ion-label>
+          </ion-item>
 
-    <ion-slide>
-      <div>
-        <ion-card (click)="navigateLinkFour()">
-          <img src="assets/images/link4.png" />
-          <ion-label> The Best Financial Advice I Ever Got </ion-label>
+          <ion-card-content class="fixedSlide1">
+            Link Name {{ u.id }}
+          </ion-card-content>
         </ion-card>
       </div>
     </ion-slide>
