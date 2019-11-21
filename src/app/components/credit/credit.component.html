@@ -164,13 +164,27 @@
           <ion-label position="floating">
             # Total payments
           </ion-label>
-          <ion-input [(ngModel)]="totalPayment" type="number"></ion-input>
+          <ion-input
+            (ionChange)="changetodoTotalPayment()"
+            [(ngModel)]="totalPayment"
+            pattern="[0-9]+"
+            type="number"
+          ></ion-input>
+          <P style="color:red;" [hidden]="showErrorTotal">{{ msg }}</P>
         </ion-item>
         <ion-item>
           <ion-label position="floating">
             # Late payments
           </ion-label>
-          <ion-input [(ngModel)]="latePayments" type="number"></ion-input>
+          <ion-input
+            (ionChange)="changetodoLate()"
+            [(ngModel)]="latePayments"
+            pattern="[0-9]+"
+            type="number"
+          ></ion-input>
+          <P style="color:red;" [hidden]="showErrorLate">{{ msg1 }}</P>
+          <P style="color:red;" [hidden]="showErrorGreater">{{ msg2 }}</P>
+          <P style="color:red;" [hidden]="showErrorNoTotal">{{ msg3 }}</P>
         </ion-item>
       </div>
     </ion-item>
@@ -184,13 +198,27 @@
           <ion-label position="floating">
             Credit Limit
           </ion-label>
-          <ion-input [(ngModel)]="creditLimit" type="number"></ion-input>
+          <ion-input
+            (ionChange)="achangetodoTotalPayment()"
+            [(ngModel)]="creditLimit"
+            pattern="[0-9]+"
+            type="number"
+          ></ion-input>
+          <P style="color:red;" [hidden]="ashowErrorTotal">{{ amsg }}</P>
         </ion-item>
         <ion-item>
           <ion-label position="floating">
             Amount you owe
           </ion-label>
-          <ion-input [(ngModel)]="creditCardBalance" type="number"></ion-input>
+          <ion-input
+            (ionChange)="achangetodoLate()"
+            [(ngModel)]="creditCardBalance"
+            pattern="[0-9]+"
+            type="number"
+          ></ion-input>
+          <P style="color:red;" [hidden]="ashowErrorLate">{{ amsg1 }}</P>
+          <P style="color:red;" [hidden]="ashowErrorGreater">{{ amsg2 }}</P>
+          <P style="color:red;" [hidden]="ashowErrorNoTotal">{{ amsg3 }}</P>
         </ion-item>
       </div>
     </ion-item>
@@ -223,7 +251,9 @@
         <ion-select-option value="85">zero</ion-select-option>
       </ion-select>
     </ion-item>
-    <ion-button (click)="updateChart()">Calculate Credit</ion-button>
+    <ion-button [hidden]="hideButton" (click)="updateChart()"
+      >Calculate Credit</ion-button
+    >
     <div [hidden]="visible">
       <ion-card>
         <ion-card-header>

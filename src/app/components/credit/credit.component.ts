@@ -26,6 +26,24 @@ export class CreditComponent implements OnInit {
   labelVisible = true;
   labelVisible1 = true;
   options: any;
+  msg: any;
+  msg1: any;
+  msg2: any;
+  msg3: any;
+  hideButton = false;
+  showErrorTotal = true;
+  showErrorLate = true;
+  showErrorGreater = true;
+  showErrorNoTotal = true;
+  amsg: any;
+  amsg1: any;
+  amsg2: any;
+  amsg3: any;
+
+  ashowErrorTotal = true;
+  ashowErrorLate = true;
+  ashowErrorGreater = true;
+  ashowErrorNoTotal = true;
   constructor(private alertController: AlertController) {
     this.options = {
       responsive: true,
@@ -98,6 +116,123 @@ export class CreditComponent implements OnInit {
       },
       options: this.options
     });
+  }
+
+  changetodoTotalPayment() {
+    if (this.totalPayment < 0) {
+      this.showErrorTotal = false;
+      this.msg = "Total payment cannot be negative";
+      this.hideButton = true;
+    } else {
+      this.showErrorTotal = true;
+      this.hideButton = false;
+    }
+
+    if (
+      this.showErrorNoTotal === false ||
+      this.showErrorLate === false ||
+      this.showErrorGreater === false
+    ) {
+      this.hideButton = true;
+    }
+  }
+
+  changetodoLate() {
+    if (
+      typeof this.totalPayment === "undefined" ||
+      this.totalPayment === null
+    ) {
+      this.msg3 = "Please Enter total payments";
+      this.showErrorNoTotal = false;
+      this.hideButton = true;
+    } else {
+      this.showErrorNoTotal = true;
+      this.hideButton = false;
+    }
+
+    if (this.latePayments < 0) {
+      this.showErrorLate = false;
+      this.msg1 = "Late payment cannot be negative";
+      this.hideButton = true;
+    } else {
+      this.showErrorLate = true;
+      this.hideButton = false;
+    }
+
+    if (this.latePayments > this.totalPayment && this.showErrorNoTotal) {
+      this.msg2 = "Late payment cannot be greater than TP";
+      this.showErrorGreater = false;
+      this.hideButton = true;
+    } else {
+      this.showErrorGreater = true;
+      this.hideButton = false;
+    }
+
+    if (
+      this.showErrorNoTotal === false ||
+      this.showErrorLate === false ||
+      this.showErrorGreater === false
+    ) {
+      this.hideButton = true;
+    }
+  }
+
+  //
+
+  achangetodoTotalPayment() {
+    if (this.creditLimit < 0) {
+      this.ashowErrorTotal = false;
+      this.amsg = "Credit limit cannot be negative";
+      this.hideButton = true;
+    } else {
+      this.ashowErrorTotal = true;
+      this.hideButton = false;
+    }
+
+    if (
+      this.ashowErrorNoTotal === false ||
+      this.ashowErrorLate === false ||
+      this.ashowErrorGreater === false
+    ) {
+      this.hideButton = true;
+    }
+  }
+
+  achangetodoLate() {
+    if (typeof this.creditLimit === "undefined" || this.creditLimit === null) {
+      this.amsg3 = "Please Enter the Credit Limit";
+      this.ashowErrorNoTotal = false;
+      this.hideButton = true;
+    } else {
+      this.ashowErrorNoTotal = true;
+      this.hideButton = false;
+    }
+
+    if (this.creditCardBalance < 0) {
+      this.ashowErrorLate = false;
+      this.amsg1 = "End a positive value";
+      this.hideButton = true;
+    } else {
+      this.ashowErrorLate = true;
+      this.hideButton = false;
+    }
+
+    if (this.creditCardBalance > this.creditLimit && this.ashowErrorNoTotal) {
+      this.amsg2 = "You cannot owe more than your CL";
+      this.ashowErrorGreater = false;
+      this.hideButton = true;
+    } else {
+      this.ashowErrorGreater = true;
+      this.hideButton = false;
+    }
+
+    if (
+      this.ashowErrorNoTotal === false ||
+      this.ashowErrorLate === false ||
+      this.ashowErrorGreater === false
+    ) {
+      this.hideButton = true;
+    }
   }
 
   updateChart() {
@@ -194,6 +329,18 @@ export class CreditComponent implements OnInit {
   }
 
   showCreditCal() {
+    this.scrollAlert();
     this.hideCredit = false;
+  }
+
+  async scrollAlert() {
+    const alert = await this.alertController.create({
+      header: "Message",
+
+      message: " <br><br> Scroll for Credit Calculator",
+      buttons: ["OK"]
+    });
+
+    await alert.present();
   }
 }
