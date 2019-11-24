@@ -4,8 +4,12 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="fixed ion-text-center">
-  <ion-slides class="fixed ion-text-center" pager="true" [options]="slideOpts">
+<ion-content class="fixedcontent ion-text-center">
+  <ion-slides
+    class="fixed ion-text-center"
+    pager="true"
+    [options]="slideOptsOne"
+  >
     <ion-slide class="card ion-text-center" *ngFor="let u of data">
       <div>
         <ion-card class="fixedSlide1" (click)="navigateLink(u.URLLink)">

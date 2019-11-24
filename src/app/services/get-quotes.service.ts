@@ -9,7 +9,7 @@ import "rxjs/add/operator/do";
 })
 export class GetQuotesService {
   url =
-    "https://cors-anywhere.herokuapp.com/http://35.170.203.135:8080/api/files/all";
+    "https://cors-anywhere.herokuapp.com/http://3.86.106.78:8080/api/files/all";
   constructor(private http: HttpClient) {}
 
   getImages() {

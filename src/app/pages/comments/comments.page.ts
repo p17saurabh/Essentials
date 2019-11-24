@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { AlertController } from "@ionic/angular";
 import { MenuController } from "@ionic/angular";
+import { Auth } from "aws-amplify";
 
 @Component({
   selector: "app-comments",
@@ -11,7 +12,7 @@ import { MenuController } from "@ionic/angular";
 })
 export class CommentsPage implements OnInit {
   data: any;
-
+  u: any;
   constructor(
     private router: Router,
     private alertController: AlertController,
@@ -20,6 +21,11 @@ export class CommentsPage implements OnInit {
     private route: ActivatedRoute
   ) {
     this.menuCtrl.enable(false);
+    Auth.currentAuthenticatedUser({
+      bypassCache: false // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
+    })
+      .then(user => (this.u = user.username))
+      .catch(err => console.log(err));
   }
 
   ngOnInit() {
@@ -37,7 +43,8 @@ export class CommentsPage implements OnInit {
   ionViewDidEnter() {}
 
   postComment(com: any) {
-    this.data.comments.unshift(com);
+    let comm = { comment: com, user: this.u };
+    this.data.comments.unshift(comm);
     console.log(this.data);
     this.putCommentsService.putComments(this.data.id, this.data.comments);
   }
@@ -69,11 +76,31 @@ export class CommentsPage implements OnInit {
           text: "Ok",
           handler: data => {
             console.log(JSON.stringify(data));
-            this.postComment(data.com);
+            if (
+              data == null ||
+              data == undefined ||
+              data.com == null ||
+              data.com == undefined ||
+              data.com.length == 0
+            ) {
+              this.presentInvalidComment();
+            } else {
+              this.postComment(data.com);
+            }
             console.log("Confirm Ok");
           }
         }
       ]
+    });
+
+    await alert.present();
+  }
+
+  async presentInvalidComment() {
+    const alert = await this.alertController.create({
+      header: "Blank Entry",
+      message: " <br><br> Comment cannot be empty",
+      buttons: ["OK"]
     });
 
     await alert.present();
@@ -87,5 +114,8 @@ export class CommentsPage implements OnInit {
       console.log("Async operation has ended");
       event.target.complete();
     }, 2000);
+  }
+  navigateToMsgPage() {
+    this.router.navigate(["home/messages"]);
   }
 }

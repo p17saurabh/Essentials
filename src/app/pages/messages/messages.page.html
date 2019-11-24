@@ -23,7 +23,7 @@
     (click)="getUserQuestions()"
   >
     <ion-icon name="contact"></ion-icon>
-    Get my qyestions
+    Get my questions
   </ion-button>
 
   <ion-button
@@ -56,16 +56,19 @@
       <p>Loading data</p>
       <ion-spinner name="dots"></ion-spinner>
     </div>
-    <ion-item *ngFor="let type of questions">
-      <div>
-        <p>
-          <strong
-            [ngStyle]="{ color: type.comments.length == 0 ? 'red' : 'dark' }"
-            (click)="getComments(type)"
+    <ion-item *ngFor="let type of questions" position="fixed">
+      <div (click)="getComments(type)" class="no-padding">
+        <div (click)="getComments(type)" position="floating">
+          <p
+            class="item-text-wrap"
+            style="font-size:14px;"
+            [ngStyle]="{ color: type.comments.length == 0 ? 'orange' : 'dark' }"
           >
-            {{ type.title }}
-          </strong>
-        </p>
+            <strong>
+              {{ type.title }}
+            </strong>
+          </p>
+        </div>
         <div *ngIf="type.comments">
           <ion-label position="stacked" color="dark">
             Comments : {{ type.comments.length }}
@@ -74,13 +77,19 @@
             Question by : {{ type.user }}
           </ion-label>
         </div>
+
+        <div>
+          <ion-icon
+            name="undo"
+            position="fixed"
+            class="ion-text-right"
+            (click)="getComments(type)"
+          ></ion-icon>
+          <p style="font-size:4px; color:white;">
+            ..............................................................................................................................................................................................................................................................
+          </p>
+        </div>
       </div>
-      <ion-icon
-        name="undo"
-        position="fixed"
-        class="ion-text-right"
-        (click)="getComments(type)"
-      ></ion-icon>
     </ion-item>
   </ion-list>
 </ion-content>

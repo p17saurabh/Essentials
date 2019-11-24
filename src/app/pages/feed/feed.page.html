@@ -16,6 +16,16 @@
 
 <ion-content>
   <app-logo></app-logo>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing..."
+    >
+    </ion-refresher-content>
+  </ion-refresher>
   <app-quotes></app-quotes>
   <app-links></app-links>
   <app-yoututbe-slides></app-yoututbe-slides>

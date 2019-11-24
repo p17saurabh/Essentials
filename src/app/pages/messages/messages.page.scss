@@ -1,3 +1,10 @@
 .my-label {
   font-size: 1.7em;
 }
+.wrap-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.no-padding {
+  padding: 0px !important;
+}

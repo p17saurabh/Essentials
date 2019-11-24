@@ -40,6 +40,7 @@ export class MessagesPage implements OnInit {
   }
 
   getUserQuestions() {
+    this.presentRefreshAlert();
     this.hidden = false;
     this.getUserQuestionsService.getUserQuestions().subscribe(data => {
       console.log(data);
@@ -106,8 +107,22 @@ export class MessagesPage implements OnInit {
         {
           text: "Ok",
           handler: data => {
-            console.log(JSON.stringify(data));
-            this.postQuestion(data.title, data.question);
+            console.log(JSON.stringify(data.title));
+            if (
+              data == null ||
+              data == undefined ||
+              data.title == null ||
+              data.title == undefined ||
+              data.title.length == 0 ||
+              data.question == null ||
+              data.question == undefined ||
+              data.question.length == 0
+            ) {
+              this.presentInvalidQuestionAlert();
+            } else {
+              this.postQuestion(data.title, data.question);
+            }
+
             console.log("Confirm Ok");
           }
         }
@@ -140,11 +155,34 @@ export class MessagesPage implements OnInit {
           text: "Ok",
           handler: data => {
             console.log(JSON.stringify(data));
-            this.searchQuestion(data.title);
+            if (data.title.length > 0) {
+              this.searchQuestion(data.title);
+            }
+
             console.log("Confirm Ok");
           }
         }
       ]
+    });
+
+    await alert.present();
+  }
+
+  async presentInvalidQuestionAlert() {
+    const alert = await this.alertController.create({
+      header: "Blank Entry",
+      message: " <br><br> Please enter question Title and the actual question",
+      buttons: ["OK"]
+    });
+
+    await alert.present();
+  }
+
+  async presentRefreshAlert() {
+    const alert = await this.alertController.create({
+      header: "Info",
+      message: " <br><br> Refresh to view all questions",
+      buttons: ["OK"]
     });
 
     await alert.present();
