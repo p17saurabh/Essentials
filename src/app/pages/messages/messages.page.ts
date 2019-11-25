@@ -67,11 +67,14 @@ export class MessagesPage implements OnInit {
   }
 
   searchQuestion(title: any) {
+    this.hidden = false;
+    this.userCommenthide = false;
     this.getQuestionsTitleService.getUserQuestions(title).subscribe(data => {
       console.log(data);
       this.questions = data;
       var keys = Object.keys(this.questions);
       this.size = keys.length;
+      this.hidden = true;
       console.log(this.questions);
     });
   }
