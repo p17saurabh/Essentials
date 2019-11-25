@@ -241,6 +241,7 @@ export class CreditComponent implements OnInit {
 
   updateChart() {
     this.visible = false;
+    this.content.scrollToBottom(300);
     this.paymentHistory =
       ((this.totalPayment - this.latePayments) / this.totalPayment) *
       850 *
@@ -334,7 +335,8 @@ export class CreditComponent implements OnInit {
 
   showCreditCal() {
     this.content.scrollToBottom(300);
-    this.scrollAlert();
+    this.hideButton = true;
+    //this.scrollAlert();
     this.hideCredit = false;
   }
 

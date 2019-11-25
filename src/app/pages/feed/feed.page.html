@@ -14,7 +14,12 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content
+  force-overscroll="false"
+  position="fixed"
+  overflow-scroll="false"
+  has-bouncing="false"
+>
   <app-logo></app-logo>
 
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">

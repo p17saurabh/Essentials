@@ -18,6 +18,12 @@ ion-card-content {
   width: 100%;
   height: 75%;
 }
+.fixedpoint {
+  padding: 35px 2px;
+  display: block;
+  width: 100%;
+  height: 96%;
+}
 
 .fixedcan {
   padding: 35px 2px;
@@ -38,4 +44,29 @@ ion-card-content {
   display: block;
   width: 100%;
   height: 100%;
+}
+.scroll-content {
+  -webkit-overflow-scrolling: auto !important;
+}
+
+.sizehigh {
+  height: 200%;
+}
+
+.fixed[scrollx="true"],
+div[scrolly="true"] {
+  position: relative;
+  overflow: hidden;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.fixed[scrollx="true"] {
+  overflow-x: auto;
+}
+
+.fixed[scrolly="true"] {
+  overflow-y: auto;
 }

@@ -3,280 +3,284 @@
     <ion-title>Credit Score Calculator</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content class=" fixed ion-text-center">
-  <ion-slides pager="true" [options]="slideOptsOne" #theSlides>
-    <ion-slide class="fixedSlide">
-      <ion-item>
-        <ion-card class="fixedSlide">
-          <ion-item>
-            <ion-icon name="card" slot="start"></ion-icon>
-            <ion-label>Payment History</ion-label>
-          </ion-item>
-
-          <ion-card-content class="fixedSlide ">
-            Gives lenders an idea of your overall payment history and shows how
-            many late payments you have missed.
-            <br />
-            <br />
-            Even if you can’t make the full payment on a credit card, just
-            paying down the minimum (usually $35) will avoid any mispayment on
-            your credit report. You still want to pay off the full amount just
-            to avoid any interest
-            <br />
-            <br />
-            A long record of on-time payments shows lenders that you are
-            responsible and timely
-            <br />
-            <br />
-            <div class="ion-text-center">
-              <ion-button size="small" (click)="skip(theSlides)" color="light"
-                >skip</ion-button
-              >
-            </div>
-          </ion-card-content>
-        </ion-card>
-      </ion-item>
-    </ion-slide>
-    <ion-slide class="fixedSlide ">
-      <ion-item>
-        <ion-card class="fixedSlide ">
-          <ion-item>
-            <ion-icon name="card" slot="start"></ion-icon>
-            <ion-label>Utilization Rate</ion-label>
-          </ion-item>
-
-          <ion-card-content class="fixedSlide ">
-            Utilization rate is how much you owe compared to how much you are
-            allowed to spend on your credit card .
-            <br />
-            <br />
-            Every month, credit card companies and banks send a report, you can
-            think of it as a snapshot, to the three credit bureaus (usually on
-            the same day every month). For example, if your credit limit is
-            $1000(how much you’re allowed to spend) and on that day you have a
-            balance of $500(amount owed), that means 50% of your credit has been
-            utilized. You want to stay below 11% utilization rate to get the
-            maximum amounts of points from this category.
-            <br />
-            <br />
-            If you pay off your balance immediately and not wait till the end of
-            the month, you can avoid a higher utilization rate which will
-            improve your score
-          </ion-card-content>
-        </ion-card>
-      </ion-item>
-    </ion-slide>
-    <ion-slide class="fixedSlide ">
-      <ion-item>
-        <ion-card class="fixedSlide ">
-          <ion-item>
-            <ion-icon name="card" slot="start"></ion-icon>
-            <ion-label>Age of Credit</ion-label>
-          </ion-item>
-
-          <ion-card-content class="fixedSlide ">
-            This category averages the ages of all your accounts, credit cards,
-            mortgages, and other loans.
-            <br />
-            <br />
-            Lenders normally would like to see that you have experience with
-            using credit reliably.
-            <br />
-            <br />
-            For example, if you have 1 credit card with 10 years of credit and
-            later down the road you decided to get another loan now your average
-            age between the two is now 5 years.
-            <br />
-            <br />
-            Age of credit is also one of the slowest to improve because it
-            requires the most time.
-            <br />
-            <br />
-            This is why it’s so important to start when you’re young. As soon as
-            you turn 18 you are allowed to open up your own credit card to begin
-            building history
-          </ion-card-content>
-        </ion-card>
-      </ion-item>
-    </ion-slide>
-    <ion-slide class="fixedSlide1 ">
-      <ion-item>
-        <ion-card class="fixedSlide1">
-          <ion-item>
-            <ion-icon name="card" slot="start"></ion-icon>
-            <ion-label>Derogatory marks</ion-label>
-          </ion-item>
-
-          <ion-card-content class="fixedSlide1">
-            Sometimes referred to as a hard inquiry. Anytime a company ask for
-            your permission to check your credit worthiness using your social
-            security, it will count towards your score..
-            <br />
-            <br />
-            Too many hard inquiries will affect your score negatively. Inquires
-            drops off your report after two years meaning your score will
-            recover.
-            <br />
-            <br />
-            This means that opening too many credit cards in the same month will
-            affect your score negatively in the short run,<br />
-            but will improve after the two years are up.
-          </ion-card-content>
-        </ion-card>
-      </ion-item>
-    </ion-slide>
-
-    <ion-slide class="fixedSlide1">
-      <ion-item>
-        <ion-card class="fixedSlide1">
-          <ion-item>
-            <ion-icon name="card" slot="start"></ion-icon>
-            <ion-label>Total of Accounts</ion-label>
-          </ion-item>
-
-          <ion-card-content class="fixedSlide1">
-            Refers to how many credit cards, mortgages, car loans, student loans
-            and any other accounts you have.
-            <br />
-            <br />
-            The more accounts you have, the better your score will be
-            <br />
-            <br />
-            Credit cards are one of the easiest way to build your credit
-          </ion-card-content>
-        </ion-card>
-      </ion-item>
-    </ion-slide>
-
-    <ion-slide class="fixed ">
-      <br />
-      <br />
-      <ion-label position="floating" class="ion-text-center">
-        <p><strong color="dark">Whats my score ?</strong></p>
-      </ion-label>
-      <br />
-      <ion-button (click)="showCreditCal()" class="ion-text-center">
-        <ion-icon name="calculator" color="warning"> </ion-icon>
-      </ion-button>
-    </ion-slide>
-  </ion-slides>
-</ion-content>
 <ion-content
   #content
+  class="fixedpoint"
   [scrollEvents]="true"
-  class=" fixed ion-text-center"
-  [hidden]="hideCredit"
+  force-overscroll="true"
+  position="fixed"
+  overflow-scroll="true"
+  has-bouncing="true"
 >
-  <ion-item>
-    <ion-label class="clickEnableCls" stacked (click)="labelClick()">
-      Payment history
-    </ion-label>
-    <div [hidden]="labelVisible">
-      <ion-item>
-        <ion-label position="floating">
-          # Total payments
-        </ion-label>
-        <ion-input
-          (ionChange)="changetodoTotalPayment()"
-          [(ngModel)]="totalPayment"
-          pattern="[0-9]+"
-          type="number"
-        ></ion-input>
-        <P style="color:red;" [hidden]="showErrorTotal">{{ msg }}</P>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">
-          # Late payments
-        </ion-label>
-        <ion-input
-          (ionChange)="changetodoLate()"
-          [(ngModel)]="latePayments"
-          pattern="[0-9]+"
-          type="number"
-        ></ion-input>
-        <P style="color:red;" [hidden]="showErrorLate">{{ msg1 }}</P>
-        <P style="color:red;" [hidden]="showErrorGreater">{{ msg2 }}</P>
-        <P style="color:red;" [hidden]="showErrorNoTotal">{{ msg3 }}</P>
-      </ion-item>
-    </div>
-  </ion-item>
+  <div position="fixed" scrolly="false" class=" fixed ion-text-center">
+    <ion-slides pager="true" [options]="slideOptsOne" #theSlides>
+      <ion-slide class="fixedSlide">
+        <ion-item>
+          <ion-card class="fixedSlide">
+            <ion-item>
+              <ion-icon name="card" slot="start"></ion-icon>
+              <ion-label>Payment History</ion-label>
+            </ion-item>
 
-  <ion-item>
-    <ion-label class="clickEnableCls" stacked (click)="labelClick1()">
-      Utilization Rate
-    </ion-label>
-    <div [hidden]="labelVisible1">
-      <ion-item>
-        <ion-label position="floating">
-          Credit Limit
+            <ion-card-content class="fixedSlide ">
+              Gives lenders an idea of your overall payment history and shows
+              how many late payments you have missed.
+              <br />
+              <br />
+              Even if you can’t make the full payment on a credit card, just
+              paying down the minimum (usually $35) will avoid any mispayment on
+              your credit report. You still want to pay off the full amount just
+              to avoid any interest
+              <br />
+              <br />
+              A long record of on-time payments shows lenders that you are
+              responsible and timely
+              <br />
+              <br />
+              <div class="ion-text-center">
+                <ion-button size="small" (click)="skip(theSlides)" color="light"
+                  >skip</ion-button
+                >
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </ion-item>
+      </ion-slide>
+      <ion-slide class="fixedSlide ">
+        <ion-item>
+          <ion-card class="fixedSlide ">
+            <ion-item>
+              <ion-icon name="card" slot="start"></ion-icon>
+              <ion-label>Utilization Rate</ion-label>
+            </ion-item>
+
+            <ion-card-content class="fixedSlide ">
+              Utilization rate is how much you owe compared to how much you are
+              allowed to spend on your credit card .
+              <br />
+              <br />
+              Every month, credit card companies and banks send a report, you
+              can think of it as a snapshot, to the three credit bureaus
+              (usually on the same day every month). For example, if your credit
+              limit is $1000(how much you’re allowed to spend) and on that day
+              you have a balance of $500(amount owed), that means 50% of your
+              credit has been utilized. You want to stay below 11% utilization
+              rate to get the maximum amounts of points from this category.
+              <br />
+              <br />
+              If you pay off your balance immediately and not wait till the end
+              of the month, you can avoid a higher utilization rate which will
+              improve your score
+            </ion-card-content>
+          </ion-card>
+        </ion-item>
+      </ion-slide>
+      <ion-slide class="fixedSlide ">
+        <ion-item>
+          <ion-card class="fixedSlide ">
+            <ion-item>
+              <ion-icon name="card" slot="start"></ion-icon>
+              <ion-label>Age of Credit</ion-label>
+            </ion-item>
+
+            <ion-card-content class="fixedSlide ">
+              This category averages the ages of all your accounts, credit
+              cards, mortgages, and other loans.
+              <br />
+              <br />
+              Lenders normally would like to see that you have experience with
+              using credit reliably.
+              <br />
+              <br />
+              For example, if you have 1 credit card with 10 years of credit and
+              later down the road you decided to get another loan now your
+              average age between the two is now 5 years.
+              <br />
+              <br />
+              Age of credit is also one of the slowest to improve because it
+              requires the most time.
+              <br />
+              <br />
+              This is why it’s so important to start when you’re young. As soon
+              as you turn 18 you are allowed to open up your own credit card to
+              begin building history
+            </ion-card-content>
+          </ion-card>
+        </ion-item>
+      </ion-slide>
+      <ion-slide class="fixedSlide1 ">
+        <ion-item>
+          <ion-card class="fixedSlide1">
+            <ion-item>
+              <ion-icon name="card" slot="start"></ion-icon>
+              <ion-label>Derogatory marks</ion-label>
+            </ion-item>
+
+            <ion-card-content class="fixedSlide1">
+              Sometimes referred to as a hard inquiry. Anytime a company ask for
+              your permission to check your credit worthiness using your social
+              security, it will count towards your score..
+              <br />
+              <br />
+              Too many hard inquiries will affect your score negatively.
+              Inquires drops off your report after two years meaning your score
+              will recover.
+              <br />
+              <br />
+              This means that opening too many credit cards in the same month
+              will affect your score negatively in the short run,<br />
+              but will improve after the two years are up.
+            </ion-card-content>
+          </ion-card>
+        </ion-item>
+      </ion-slide>
+
+      <ion-slide class="fixedSlide1">
+        <ion-item>
+          <ion-card class="fixedSlide1">
+            <ion-item>
+              <ion-icon name="card" slot="start"></ion-icon>
+              <ion-label>Total of Accounts</ion-label>
+            </ion-item>
+
+            <ion-card-content class="fixedSlide1">
+              Refers to how many credit cards, mortgages, car loans, student
+              loans and any other accounts you have.
+              <br />
+              <br />
+              The more accounts you have, the better your score will be
+              <br />
+              <br />
+              Credit cards are one of the easiest way to build your credit
+            </ion-card-content>
+          </ion-card>
+        </ion-item>
+      </ion-slide>
+
+      <ion-slide class="fixed ">
+        <br />
+        <br />
+        <ion-label position="floating" class="ion-text-center">
+          <p><strong color="dark">Whats my score ?</strong></p>
         </ion-label>
-        <ion-input
-          (ionChange)="achangetodoTotalPayment()"
-          [(ngModel)]="creditLimit"
-          pattern="[0-9]+"
-          type="number"
-        ></ion-input>
-        <P style="color:red;" [hidden]="ashowErrorTotal">{{ amsg }}</P>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">
-          Amount you owe
-        </ion-label>
-        <ion-input
-          (ionChange)="achangetodoLate()"
-          [(ngModel)]="creditCardBalance"
-          pattern="[0-9]+"
-          type="number"
-        ></ion-input>
-        <P style="color:red;" [hidden]="ashowErrorLate">{{ amsg1 }}</P>
-        <P style="color:red;" [hidden]="ashowErrorGreater">{{ amsg2 }}</P>
-        <P style="color:red;" [hidden]="ashowErrorNoTotal">{{ amsg3 }}</P>
-      </ion-item>
+        <br />
+        <ion-button (click)="showCreditCal()" class="ion-text-center">
+          <ion-icon name="calculator" color="warning"> </ion-icon>
+        </ion-button>
+      </ion-slide>
+    </ion-slides>
+  </div>
+  <div class=" fixed ion-text-center" [hidden]="hideCredit" position="fixed">
+    <ion-item>
+      <ion-label class="clickEnableCls" stacked (click)="labelClick()">
+        Payment history
+      </ion-label>
+      <div [hidden]="labelVisible">
+        <ion-item>
+          <ion-label position="floating">
+            # Total payments
+          </ion-label>
+          <ion-input
+            (ionChange)="changetodoTotalPayment()"
+            [(ngModel)]="totalPayment"
+            pattern="[0-9]+"
+            type="number"
+          ></ion-input>
+          <P style="color:red;" [hidden]="showErrorTotal">{{ msg }}</P>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">
+            # Late payments
+          </ion-label>
+          <ion-input
+            (ionChange)="changetodoLate()"
+            [(ngModel)]="latePayments"
+            pattern="[0-9]+"
+            type="number"
+          ></ion-input>
+          <P style="color:red;" [hidden]="showErrorLate">{{ msg1 }}</P>
+          <P style="color:red;" [hidden]="showErrorGreater">{{ msg2 }}</P>
+          <P style="color:red;" [hidden]="showErrorNoTotal">{{ msg3 }}</P>
+        </ion-item>
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label class="clickEnableCls" stacked (click)="labelClick1()">
+        Utilization Rate
+      </ion-label>
+      <div [hidden]="labelVisible1">
+        <ion-item>
+          <ion-label position="floating">
+            Credit Limit
+          </ion-label>
+          <ion-input
+            (ionChange)="achangetodoTotalPayment()"
+            [(ngModel)]="creditLimit"
+            pattern="[0-9]+"
+            type="number"
+          ></ion-input>
+          <P style="color:red;" [hidden]="ashowErrorTotal">{{ amsg }}</P>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">
+            Amount you owe
+          </ion-label>
+          <ion-input
+            (ionChange)="achangetodoLate()"
+            [(ngModel)]="creditCardBalance"
+            pattern="[0-9]+"
+            type="number"
+          ></ion-input>
+          <P style="color:red;" [hidden]="ashowErrorLate">{{ amsg1 }}</P>
+          <P style="color:red;" [hidden]="ashowErrorGreater">{{ amsg2 }}</P>
+          <P style="color:red;" [hidden]="ashowErrorNoTotal">{{ amsg3 }}</P>
+        </ion-item>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Age of credit</ion-label>
+      <ion-select [(ngModel)]="ageOfCredit" (ionChange)="optionsFn()">
+        <ion-select-option value="25.5">Less than 2 years</ion-select-option>
+        <ion-select-option value="51">2 to 4 years</ion-select-option>
+        <ion-select-option value="76">5 to 6 years</ion-select-option>
+        <ion-select-option value="102">7 to 8 years</ion-select-option>
+        <ion-select-option value="127.5">9 plus years</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>No. credit accounts</ion-label>
+      <ion-select [(ngModel)]="typeOfCredit">
+        <ion-select-option value="21.25">0 to 5</ion-select-option>
+        <ion-select-option value="42.5">6 to 10</ion-select-option>
+        <ion-select-option value="63.75">11 to 20</ion-select-option>
+        <ion-select-option value="85">21 and more</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>No of hard inquires</ion-label>
+      <ion-select [(ngModel)]="hardInquires">
+        <ion-select-option value="17">9 and more</ion-select-option>
+        <ion-select-option value="34">5 to 8</ion-select-option>
+        <ion-select-option value="51">3 to 4</ion-select-option>
+        <ion-select-option value="68">1 to 2</ion-select-option>
+        <ion-select-option value="85">zero</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-button [hidden]="hideButton" (click)="updateChart()"
+      >Calculate Credit</ion-button
+    >
+  </div>
+  <div [hidden]="visible" class=" fixedcan ion-text-center" position="fixed">
+    <div [hidden]="visible">
+      <ion-card>
+        <ion-card-header>
+          Credit Score Chart
+        </ion-card-header>
+        <ion-card-content>
+          <canvas #doughnutCanvas width="100" height="100"></canvas>
+        </ion-card-content>
+      </ion-card>
     </div>
-  </ion-item>
-  <ion-item>
-    <ion-label>Age of credit</ion-label>
-    <ion-select [(ngModel)]="ageOfCredit" (ionChange)="optionsFn()">
-      <ion-select-option value="25.5">Less than 2 years</ion-select-option>
-      <ion-select-option value="51">2 to 4 years</ion-select-option>
-      <ion-select-option value="76">5 to 6 years</ion-select-option>
-      <ion-select-option value="102">7 to 8 years</ion-select-option>
-      <ion-select-option value="127.5">9 plus years</ion-select-option>
-    </ion-select>
-  </ion-item>
-  <ion-item>
-    <ion-label>No. credit accounts</ion-label>
-    <ion-select [(ngModel)]="typeOfCredit">
-      <ion-select-option value="21.25">0 to 5</ion-select-option>
-      <ion-select-option value="42.5">6 to 10</ion-select-option>
-      <ion-select-option value="63.75">11 to 20</ion-select-option>
-      <ion-select-option value="85">21 and more</ion-select-option>
-    </ion-select>
-  </ion-item>
-  <ion-item>
-    <ion-label>No of hard inquires</ion-label>
-    <ion-select [(ngModel)]="hardInquires">
-      <ion-select-option value="17">9 and more</ion-select-option>
-      <ion-select-option value="34">5 to 8</ion-select-option>
-      <ion-select-option value="51">3 to 4</ion-select-option>
-      <ion-select-option value="68">1 to 2</ion-select-option>
-      <ion-select-option value="85">zero</ion-select-option>
-    </ion-select>
-  </ion-item>
-  <ion-button [hidden]="hideButton" (click)="updateChart()"
-    >Calculate Credit</ion-button
-  >
-</ion-content>
-<ion-content [hidden]="visible" class=" fixedcan ion-text-center">
-  <div [hidden]="visible">
-    <ion-card>
-      <ion-card-header>
-        Credit Score Chart
-      </ion-card-header>
-      <ion-card-content>
-        <canvas #doughnutCanvas width="100" height="100"></canvas>
-      </ion-card-content>
-    </ion-card>
   </div>
 </ion-content>
