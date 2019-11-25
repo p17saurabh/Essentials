@@ -111,16 +111,16 @@ export class FeedPage implements OnInit {
       type: "doughnut",
       data: {
         labels: [
-          "Payment History",
-          "Points lost PH",
-          "Utilization Rate",
-          "Points lost UR",
-          "Age of Credit",
-          "Points lost AoC",
-          "Type of credits",
-          "Points lost ToC",
-          "#of hard inquires",
-          "Points lost HI"
+          "Payment History   ",
+          "Points lost PH    ",
+          "Utilization Rate  ",
+          "Points lost UR    ",
+          "Age of Credit     ",
+          "Points lost AoC   ",
+          "Type of credits   ",
+          "Points lost ToC   ",
+          "#of hard inquires ",
+          "Points lost HI    "
         ],
         datasets: [
           {
@@ -393,7 +393,7 @@ export class FeedPage implements OnInit {
     slideShadows: true,
     pagination: {
       el: ".swiper-pagination",
-      type: "fraction"
+      type: "node"
     },
     on: {
       beforeInit() {

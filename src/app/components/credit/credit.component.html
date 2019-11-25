@@ -172,9 +172,11 @@
   </div>
   <div class=" fixed ion-text-center" [hidden]="hideCredit" position="fixed">
     <ion-item>
-      <ion-label class="clickEnableCls" stacked (click)="labelClick()">
-        Payment history
-      </ion-label>
+      <div (click)="labelClick()">
+        <p class="clickEnableCls" stacked (click)="labelClick()">
+          Payment history
+        </p>
+      </div>
       <div [hidden]="labelVisible">
         <ion-item>
           <ion-label position="floating">
@@ -206,9 +208,11 @@
     </ion-item>
 
     <ion-item>
-      <ion-label class="clickEnableCls" stacked (click)="labelClick1()">
-        Utilization Rate
-      </ion-label>
+      <div (click)="labelClick()">
+        <p class="clickEnableCls" stacked (click)="labelClick1()">
+          Utilization Rate
+        </p>
+      </div>
       <div [hidden]="labelVisible1">
         <ion-item>
           <ion-label position="floating">
