@@ -37,7 +37,8 @@
 
   <ion-item>
     <ion-label color="primary" position="stacked">Question</ion-label>
-    <ion-textarea color="dark" readonly value="{{ data.body }}"> </ion-textarea>
+    <ion-textarea rows="8" color="dark" readonly value="{{ data.body }}">
+    </ion-textarea>
   </ion-item>
   <div>
     <ion-button size="small" shape="round " color="warning" (click)="comment()">
