@@ -357,7 +357,7 @@ export class CreditComponent implements OnInit {
     slideShadows: true,
     pagination: {
       el: ".swiper-pagination",
-      type: "fraction"
+      type: "none"
     },
     on: {
       beforeInit() {
