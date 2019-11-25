@@ -1,3 +1,75 @@
 .scroll-content {
   -webkit-overflow-scrolling: auto !important;
 }
+ion-card-content {
+  padding: 1px 2px;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  position: relative;
+
+  /*padding-top: 50px;*/
+  height: 100;
+  overflow: hidden;
+}
+.fixed {
+  padding: 35px 2px;
+  display: block;
+  width: 100%;
+  height: 75%;
+}
+.fixedpoint {
+  padding: 35px 2px;
+  display: block;
+  width: 100%;
+  height: 96%;
+}
+
+.fixedcan {
+  padding: 35px 2px;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.fixedSlide {
+  padding: 10px 2px;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.fixedSlide1 {
+  padding: 10px 2px;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.scroll-content {
+  -webkit-overflow-scrolling: auto !important;
+}
+
+.sizehigh {
+  height: 200%;
+}
+
+.fixed[scrollx="true"],
+div[scrolly="true"] {
+  position: relative;
+  overflow: hidden;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.fixed[scrollx="true"] {
+  overflow-x: auto;
+}
+
+.fixed[scrolly="true"] {
+  overflow-y: auto;
+}

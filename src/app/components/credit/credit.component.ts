@@ -301,8 +301,7 @@ export class CreditComponent implements OnInit {
         Math.round(this.totalPoints) +
         " out of 850." +
         "<br><br>" +
-        this.score(this.totalPoints) +
-        " <br><br> Scroll for detailed break down!!",
+        this.score(this.totalPoints),
       buttons: ["OK"]
     });
 

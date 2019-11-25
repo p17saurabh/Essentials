@@ -16,6 +16,7 @@ export class MessagesPage implements OnInit {
   questions: any;
   hidden = false;
   size: any;
+  userCommenthide = true;
   constructor(
     private alertController: AlertController,
     private postQuesrionService: PostQuesrionService,
@@ -29,6 +30,7 @@ export class MessagesPage implements OnInit {
   }
 
   getQuestions() {
+    this.userCommenthide = true;
     this.getQuestionsService.getQuestions().subscribe(data => {
       console.log(data);
       this.questions = data;
@@ -40,8 +42,8 @@ export class MessagesPage implements OnInit {
   }
 
   getUserQuestions() {
-    this.presentRefreshAlert();
     this.hidden = false;
+    this.userCommenthide = false;
     this.getUserQuestionsService.getUserQuestions().subscribe(data => {
       console.log(data);
       this.questions = data;
@@ -171,7 +173,7 @@ export class MessagesPage implements OnInit {
   async presentInvalidQuestionAlert() {
     const alert = await this.alertController.create({
       header: "Blank Entry",
-      message: " <br><br> Please enter question Title and the actual question",
+      message: " <br><br> Question title or question body cannot be blank",
       buttons: ["OK"]
     });
 

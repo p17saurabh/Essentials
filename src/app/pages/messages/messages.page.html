@@ -35,7 +35,9 @@
     <ion-icon name="chatboxes"></ion-icon>
     Add question
   </ion-button>
-
+  <div [hidden]="userCommenthide" class="ion-text-center" color="warning">
+    <p [ngStyle]="{ color:  'orange'  }">Refresh to get all user questions</p>
+  </div>
   <ion-list>
     <ion-item>
       <ion-label
