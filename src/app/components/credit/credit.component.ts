@@ -14,6 +14,7 @@ export class CreditComponent implements OnInit {
   @ViewChild("doughnutCanvas", { static: false }) doughnutCanvas: ElementRef;
   @ViewChild("content", { static: true }) content: IonContent;
   @ViewChild("mySlider", { static: true }) slides: IonSlides;
+  slide1: any;
   doughnutChart: any;
   paymentHistory: any;
   utilizationRate: any;
@@ -336,6 +337,7 @@ export class CreditComponent implements OnInit {
     this.content.scrollToBottom(300);
     this.hideButton = true;
     //this.scrollAlert();
+    this.slide1.slideTo(0, 300);
     this.hideCredit = false;
   }
 
@@ -470,5 +472,6 @@ export class CreditComponent implements OnInit {
   skip(slides) {
     console.log("inside skip");
     slides.slideTo(5, 300);
+    this.slide1 = slides;
   }
 }

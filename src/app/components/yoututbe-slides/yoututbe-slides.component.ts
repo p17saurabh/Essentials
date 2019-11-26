@@ -34,7 +34,7 @@ export class YoututbeSlidesComponent implements OnInit {
     slideShadows: true,
     pagination: {
       el: ".swiper-pagination",
-      type: "none"
+      type: "fraction"
     },
     on: {
       beforeInit() {
