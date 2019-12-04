@@ -199,7 +199,12 @@
       </ion-slide>
     </ion-slides>
   </div>
-  <div class=" fixed ion-text-center" [hidden]="hideCredit" position="fixed">
+  <div class=" fixednew ion-text-center" [hidden]="hideCredit" position="fixed">
+    <ion-header>
+      <ion-toolbar color="warning" class="ion-text-center">
+        <ion-title>Calculate your score</ion-title>
+      </ion-toolbar>
+    </ion-header>
     <ion-item>
       <div (click)="labelClick()">
         <p class="clickEnableCls" stacked (click)="labelClick()">
@@ -309,6 +314,11 @@
     >
   </div>
   <div [hidden]="visible" class=" fixedcan ion-text-center" position="fixed">
+    <ion-header>
+      <ion-toolbar color="warning" class="ion-text-center">
+        <ion-title>Credit Score Chart</ion-title>
+      </ion-toolbar>
+    </ion-header>
     <div [hidden]="visible">
       <ion-card>
         <ion-card-header>

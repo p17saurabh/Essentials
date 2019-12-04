@@ -16,20 +16,20 @@ ion-card-content {
   overflow: hidden;
 }
 .fixed {
-  padding: 35px 2px;
+  padding: 15px 2px;
   display: block;
   width: 100%;
   height: 95%;
 }
 .fixedpoint {
-  padding: 35px 2px;
+  padding: 15px 2px;
   display: block;
   width: 100%;
   height: 96%;
 }
 
 .fixedcan {
-  padding: 35px 2px;
+  padding: 15px 2px;
   display: block;
   width: 100%;
   height: 100%;
@@ -72,4 +72,11 @@ div[scrolly="true"] {
 
 .fixed[scrolly="true"] {
   overflow-y: auto;
+}
+
+.fixednew {
+  padding: 15px 2px;
+  display: block;
+  width: 100%;
+  height: 75%;
 }
